@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Logic Escape XR"
-run/main_scene="uid://yy16rpwuvkb"
+run/main_scene="uid://24mmq2wgehsj"
 config/features=PackedStringArray("4.7", "Mobile")
 
 [audio]
