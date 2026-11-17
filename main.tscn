@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://24mmq2wgehsj"]
 
-[ext_resource type="PackedScene" uid="uid://b3jfvfptrviq0" path="res://switch.tscn" id="1_vivmo"]
-[ext_resource type="Script" uid="uid://vr8x4d2mmxfm" path="res://and_gate.gd" id="1_yaehf"]
+[ext_resource type="PackedScene" uid="uid://3vt1fmisska5" path="res://gate.tscn" id="1_vivmo"]
 [ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://hands/label.tscn" id="2_cegan"]
-[ext_resource type="PackedScene" uid="uid://c36aox47ljrj7" path="res://lamp.tscn" id="3_074og"]
 [ext_resource type="Script" uid="uid://ox8smfnahvcm" path="res://hands/xr_camera_3d.gd" id="6_d13ii"]
 [ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hands/hand.gd" id="7_1u8w0"]
 [ext_resource type="Script" uid="uid://muj58x3jqroj" path="res://addons/hand_pose_detector/hand_pose_detector.gd" id="8_0odxb"]
@@ -191,18 +189,16 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="content" type="Node3D" parent="." unique_id=351446812]
 
-[node name="ANDGate" type="Node3D" parent="content" unique_id=345374270]
+[node name="ANDGate" parent="content" unique_id=1494004038 instance=ExtResource("1_vivmo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.2, -0.4)
+
+[node name="ORGate" parent="content" unique_id=832824993 instance=ExtResource("1_vivmo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.4)
-script = ExtResource("1_yaehf")
+gate_type = 1
 
-[node name="SwitchA" parent="content/ANDGate" unique_id=1327372113 instance=ExtResource("1_vivmo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
-
-[node name="SwitchB" parent="content/ANDGate" unique_id=1064902177 instance=ExtResource("1_vivmo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
-
-[node name="Lamp" parent="content/ANDGate" unique_id=261735509 instance=ExtResource("3_074og")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+[node name="NOTGate" parent="content" unique_id=1764680748 instance=ExtResource("1_vivmo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, -0.2, -0.4)
+gate_type = 2
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=811185315]
 

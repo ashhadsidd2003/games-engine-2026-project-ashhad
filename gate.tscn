@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://3vt1fmisska5"]
+
+[ext_resource type="Script" uid="uid://vr8x4d2mmxfm" path="res://logic_gate.gd" id="1_5lukw"]
+[ext_resource type="PackedScene" uid="uid://b3jfvfptrviq0" path="res://switch.tscn" id="2_4oabi"]
+[ext_resource type="PackedScene" uid="uid://c36aox47ljrj7" path="res://lamp.tscn" id="3_1g733"]
+
+[node name="ANDGate" type="Node3D" unique_id=1494004038]
+script = ExtResource("1_5lukw")
+
+[node name="SwitchA" parent="." unique_id=1327372113 instance=ExtResource("2_4oabi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+
+[node name="SwitchB" parent="." unique_id=1832676643 instance=ExtResource("2_4oabi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+
+[node name="Lamp" parent="." unique_id=261735509 instance=ExtResource("3_1g733")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
