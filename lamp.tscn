@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c36aox47ljrj7"]
+
+[ext_resource type="Script" uid="uid://cs4bne4yea56h" path="res://lamp.gd" id="1_bekw5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mjj02"]
+radius = 0.05
+height = 0.1
+
+[node name="lamp" type="Node3D" unique_id=261735509]
+script = ExtResource("1_bekw5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1779663191]
+mesh = SubResource("SphereMesh_mjj02")
