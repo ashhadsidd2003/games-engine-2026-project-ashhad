@@ -2,6 +2,8 @@ extends Node3D
 
 enum GateType { AND, OR, NOT }
 
+signal output_changed(is_on: bool)
+
 @export var gate_type: GateType = GateType.AND
 
 @onready var switch_a = $SwitchA
@@ -29,3 +31,4 @@ func _on_switch_changed(_is_on: bool) -> void:
 		GateType.NOT:
 			result = not a
 	lamp.set_on(result)
+	output_changed.emit(result)

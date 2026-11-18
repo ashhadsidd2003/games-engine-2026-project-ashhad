@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://24mmq2wgehsj"]
 
 [ext_resource type="PackedScene" uid="uid://3vt1fmisska5" path="res://gate.tscn" id="1_vivmo"]
+[ext_resource type="PackedScene" uid="uid://j01m14ornp8e" path="res://door.tscn" id="2_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://hands/label.tscn" id="2_cegan"]
 [ext_resource type="Script" uid="uid://ox8smfnahvcm" path="res://hands/xr_camera_3d.gd" id="6_d13ii"]
 [ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hands/hand.gd" id="7_1u8w0"]
@@ -200,6 +201,9 @@ gate_type = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, -0.2, -0.4)
 gate_type = 2
 
+[node name="Door" parent="content" unique_id=1069012249 instance=ExtResource("2_2cqfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -1.5)
+
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=811185315]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=1130441161 node_paths=PackedStringArray("spawn_in_front")]
@@ -352,6 +356,7 @@ shape = SubResource("WorldBoundaryShape3D_307sh")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=625995929]
 environment = SubResource("Environment_c4jos")
 
+[connection signal="output_changed" from="content/ANDGate" to="content/Door" method="on_gate_changed"]
 [connection signal="pose_ended" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_started"]
 [connection signal="pose_ended" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_ended"]

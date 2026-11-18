@@ -1,0 +1,243 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://lab_room.gd" id="1_labroom"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_floor"]
+albedo_color = Color(0.11, 0.12, 0.14, 1)
+metallic = 0.6
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="Mat_wall"]
+albedo_color = Color(0.52, 0.57, 0.63, 1)
+metallic = 0.2
+roughness = 0.7
+
+[sub_resource type="StandardMaterial3D" id="Mat_ceiling"]
+albedo_color = Color(0.18, 0.2, 0.23, 1)
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="Mat_strip"]
+albedo_color = Color(0.3, 0.9, 1, 1)
+emission_enabled = true
+emission = Color(0.3, 0.9, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_frame"]
+albedo_color = Color(1, 0.6, 0.15, 1)
+emission_enabled = true
+emission = Color(1, 0.6, 0.15, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_desk"]
+albedo_color = Color(0.14, 0.16, 0.19, 1)
+metallic = 0.5
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="Mat_panel"]
+albedo_color = Color(0.05, 0.08, 0.12, 1)
+emission_enabled = true
+emission = Color(0.03, 0.1, 0.16, 1)
+
+[sub_resource type="BoxMesh" id="Box_0"]
+material = SubResource("Mat_floor")
+size = Vector3(5.2, 0.1, 5.2)
+
+[sub_resource type="BoxMesh" id="Box_1"]
+material = SubResource("Mat_ceiling")
+size = Vector3(5.2, 0.1, 5.2)
+
+[sub_resource type="BoxMesh" id="Box_2"]
+material = SubResource("Mat_wall")
+size = Vector3(5.2, 3, 0.1)
+
+[sub_resource type="BoxMesh" id="Box_3"]
+material = SubResource("Mat_wall")
+size = Vector3(0.1, 3, 5.2)
+
+[sub_resource type="BoxMesh" id="Box_4"]
+material = SubResource("Mat_wall")
+size = Vector3(2, 3, 0.1)
+
+[sub_resource type="BoxMesh" id="Box_5"]
+material = SubResource("Mat_wall")
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="Box_6"]
+material = SubResource("Mat_strip")
+size = Vector3(5, 0.04, 0.06)
+
+[sub_resource type="BoxMesh" id="Box_7"]
+material = SubResource("Mat_strip")
+size = Vector3(0.06, 0.04, 5)
+
+[sub_resource type="BoxMesh" id="Box_8"]
+material = SubResource("Mat_strip")
+size = Vector3(5, 0.03, 0.03)
+
+[sub_resource type="BoxMesh" id="Box_9"]
+material = SubResource("Mat_strip")
+size = Vector3(0.03, 0.03, 5)
+
+[sub_resource type="BoxMesh" id="Box_10"]
+material = SubResource("Mat_strip")
+size = Vector3(2, 0.03, 0.03)
+
+[sub_resource type="BoxMesh" id="Box_11"]
+material = SubResource("Mat_frame")
+size = Vector3(0.05, 2.05, 0.05)
+
+[sub_resource type="BoxMesh" id="Box_12"]
+material = SubResource("Mat_frame")
+size = Vector3(1.11, 0.05, 0.05)
+
+[sub_resource type="BoxMesh" id="Box_13"]
+material = SubResource("Mat_desk")
+size = Vector3(1.4, 0.9, 0.6)
+
+[sub_resource type="BoxMesh" id="Box_14"]
+material = SubResource("Mat_strip")
+size = Vector3(1.4, 0.02, 0.02)
+
+[sub_resource type="BoxMesh" id="Box_15"]
+material = SubResource("Mat_panel")
+size = Vector3(1.1, 0.75, 0.03)
+
+[node name="LabRoom" type="Node3D"]
+script = ExtResource("1_labroom")
+
+[node name="Shell" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("Box_0")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05, 0)
+mesh = SubResource("Box_1")
+
+[node name="BackWall" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2.55)
+mesh = SubResource("Box_2")
+
+[node name="LeftWall" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 1.5, 0)
+mesh = SubResource("Box_3")
+
+[node name="RightWall" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 1.5, 0)
+mesh = SubResource("Box_3")
+
+[node name="FrontWallLeft" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -2.55)
+mesh = SubResource("Box_4")
+
+[node name="FrontWallRight" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -2.55)
+mesh = SubResource("Box_4")
+
+[node name="FrontWallTop" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.55)
+mesh = SubResource("Box_5")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="CeilingStrip1" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95, 2.45)
+mesh = SubResource("Box_6")
+
+[node name="CeilingStrip2" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95, -2.45)
+mesh = SubResource("Box_6")
+
+[node name="CeilingStrip3" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45, 2.95, 0)
+mesh = SubResource("Box_7")
+
+[node name="CeilingStrip4" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45, 2.95, 0)
+mesh = SubResource("Box_7")
+
+[node name="FloorStrip1" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 2.48)
+mesh = SubResource("Box_8")
+
+[node name="FloorStrip2" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48, 0.02, 0)
+mesh = SubResource("Box_9")
+
+[node name="FloorStrip3" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48, 0.02, 0)
+mesh = SubResource("Box_9")
+
+[node name="FloorStrip4" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.02, -2.48)
+mesh = SubResource("Box_10")
+
+[node name="FloorStrip5" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.02, -2.48)
+mesh = SubResource("Box_10")
+
+[node name="DoorFrameLeft" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53, 1.025, -2.48)
+mesh = SubResource("Box_11")
+
+[node name="DoorFrameRight" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53, 1.025, -2.48)
+mesh = SubResource("Box_11")
+
+[node name="DoorFrameTop" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03, -2.48)
+mesh = SubResource("Box_12")
+
+[node name="RoomLight" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+light_color = Color(0.85, 0.95, 1, 1)
+light_energy = 1.5
+omni_range = 6.0
+
+[node name="DeskLight" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, -0.9)
+light_color = Color(0.6, 0.9, 1, 1)
+light_energy = 0.8
+omni_range = 2.5
+
+[node name="Desk" type="Node3D" parent="."]
+
+[node name="DeskBody" type="MeshInstance3D" parent="Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, -0.85)
+mesh = SubResource("Box_13")
+
+[node name="DeskEdge" type="MeshInstance3D" parent="Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91, -0.55)
+mesh = SubResource("Box_14")
+
+[node name="GateSpot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, -0.8)
+
+[node name="DoorSpot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.55)
+
+[node name="InfoPanel" type="Node3D" parent="."]
+transform = Transform3D(0.7314, 0, 0.6820, 0, 1, 0, -0.6820, 0, 0.7314, -1.45, 1.6, -1.55)
+
+[node name="Screen" type="MeshInstance3D" parent="InfoPanel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("Box_15")
+
+[node name="Title" type="Label3D" parent="InfoPanel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27, 0.02)
+pixel_size = 0.002
+modulate = Color(1, 0.75, 0.3, 1)
+text = "ROOM"
+font_size = 48
+outline_size = 0
+
+[node name="Instructions" type="Label3D" parent="InfoPanel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0.02)
+pixel_size = 0.0015
+modulate = Color(0.85, 0.95, 1, 1)
+text = ""
+font_size = 32
+outline_size = 0
+autowrap_mode = 3
+width = 650.0
