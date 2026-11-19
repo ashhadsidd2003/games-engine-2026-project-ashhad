@@ -1,6 +1,6 @@
 extends Area3D
 
-signal switched(is_on: bool)
+signal switched
 
 var is_on := false
 
@@ -13,7 +13,7 @@ func _on_area_entered(area: Area3D) -> void:
 		return
 	is_on = not is_on
 	_update_colour()
-	switched.emit(is_on)
+	switched.emit()
 
 func _update_colour() -> void:
 	var material := StandardMaterial3D.new()
@@ -22,3 +22,7 @@ func _update_colour() -> void:
 	else:
 		material.albedo_color = Color.RED
 	$MeshInstance3D.material_override = material
+
+func set_state(on: bool) -> void:
+	is_on = on
+	_update_colour()

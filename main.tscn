@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://24mmq2wgehsj"]
 
-[ext_resource type="PackedScene" uid="uid://3vt1fmisska5" path="res://gate.tscn" id="1_vivmo"]
-[ext_resource type="PackedScene" uid="uid://j01m14ornp8e" path="res://door.tscn" id="2_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://hands/label.tscn" id="2_cegan"]
 [ext_resource type="Script" uid="uid://ox8smfnahvcm" path="res://hands/xr_camera_3d.gd" id="6_d13ii"]
 [ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hands/hand.gd" id="7_1u8w0"]
@@ -13,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cmyxeshkakwd8" path="res://addons/hand_pose_detector/hand_pose_action_map.gd" id="13_kq58d"]
 [ext_resource type="PackedScene" uid="uid://pl71p2861rp8" path="res://addons/hand_pose_detector/hands/LeftHandHumanoid.gltf" id="14_seu75"]
 [ext_resource type="PackedScene" uid="uid://cend6ikv2su2t" path="res://hands/tip.tscn" id="15_htxhm"]
+[ext_resource type="PackedScene" path="res://room_1.tscn" id="15_vivmo"]
 [ext_resource type="PackedScene" uid="uid://bnf6crykenhd2" path="res://addons/hand_pose_detector/hands/RightHandHumanoid.gltf" id="16_jq2sk"]
 [ext_resource type="PackedScene" uid="uid://df5hynbooj1uj" path="res://addons/hand_pose_detector/hand_pose_detector.tscn" id="17_4k2k6"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="18_0rl1p"]
@@ -190,20 +189,6 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="content" type="Node3D" parent="." unique_id=351446812]
 
-[node name="ANDGate" parent="content" unique_id=1494004038 instance=ExtResource("1_vivmo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.2, -0.4)
-
-[node name="ORGate" parent="content" unique_id=832824993 instance=ExtResource("1_vivmo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.4)
-gate_type = 1
-
-[node name="NOTGate" parent="content" unique_id=1764680748 instance=ExtResource("1_vivmo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, -0.2, -0.4)
-gate_type = 2
-
-[node name="Door" parent="content" unique_id=1069012249 instance=ExtResource("2_2cqfq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -1.5)
-
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=811185315]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=1130441161 node_paths=PackedStringArray("spawn_in_front")]
@@ -343,6 +328,7 @@ script = SubResource("GDScript_6uc5y")
 transform = Transform3D(-0.486978, -0.857167, -0.16768, -0.325568, -1.4231e-08, 0.945518, -0.810468, 0.515038, -0.279066, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=195329942]
+visible = false
 
 [node name="ground" type="MeshInstance3D" parent="StaticBody3D" unique_id=1497994064]
 visible = false
@@ -356,7 +342,8 @@ shape = SubResource("WorldBoundaryShape3D_307sh")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=625995929]
 environment = SubResource("Environment_c4jos")
 
-[connection signal="output_changed" from="content/ANDGate" to="content/Door" method="on_gate_changed"]
+[node name="Room1" parent="." unique_id=1300719839 instance=ExtResource("15_vivmo")]
+
 [connection signal="pose_ended" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_started"]
 [connection signal="pose_ended" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_ended"]

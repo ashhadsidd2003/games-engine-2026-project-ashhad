@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://room.gd" id="1_room"]
+[ext_resource type="PackedScene" path="res://lab_room.tscn" id="2_lab"]
+[ext_resource type="PackedScene" path="res://gate.tscn" id="3_gate"]
+[ext_resource type="PackedScene" path="res://door.tscn" id="4_door"]
+
+[node name="Room1" type="Node3D"]
+script = ExtResource("1_room")
+
+[node name="LabRoom" parent="." instance=ExtResource("2_lab")]
+title = "ROOM 1: THE NOT GATE"
+instructions = "A NOT gate flips its input.
+Switch ON   ->  light OFF
+Switch OFF  ->  light ON
+
+The door opens when the light is ON.
+Turn the light ON to escape."
+
+[node name="Gate" parent="." instance=ExtResource("3_gate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, -0.8)
+gate_type = 2
+switch_a_starts_on = true
+
+[node name="Door" parent="." instance=ExtResource("4_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.66)

@@ -5,6 +5,7 @@ enum GateType { AND, OR, NOT }
 signal output_changed(is_on: bool)
 
 @export var gate_type: GateType = GateType.AND
+@export var switch_a_starts_on: bool = false
 
 @onready var switch_a = $SwitchA
 @onready var switch_b = $SwitchB
@@ -17,9 +18,10 @@ func _ready() -> void:
 		switch_b.visible = false
 		switch_b.monitoring = false
 		switch_a.position.x = 0
-	_on_switch_changed(false)
+	switch_a.set_state(switch_a_starts_on)
+	_on_switch_changed()
 
-func _on_switch_changed(_is_on: bool) -> void:
+func _on_switch_changed() -> void:
 	var a: bool = switch_a.is_on
 	var b: bool = switch_b.is_on
 	var result: bool
